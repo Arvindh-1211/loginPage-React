@@ -1,14 +1,30 @@
 import ProtectedRoute from "../components/ProtectedRoute";
 import AdminDashboard from "../pages/AdminDashboard";
-import LandingPage from "../pages/LandingPage";
+import ChatPage from "../pages/ChatPage";
+import DocumentsPage from "../pages/DocumentsPage";
 import LoginPage from "../pages/LoginPage";
+import SignupPage from "../pages/SignupPage";
 
 const routes = [
     {
         path: '/',
         element:
             <ProtectedRoute>
-                <LandingPage />
+                <ChatPage />
+            </ProtectedRoute>
+    },
+    {
+        path: '/chat',
+        element:
+            <ProtectedRoute>
+                <ChatPage />
+            </ProtectedRoute>
+    },
+    {
+        path: '/documents',
+        element:
+            <ProtectedRoute>
+                <DocumentsPage />
             </ProtectedRoute>
     },
     {
@@ -16,12 +32,16 @@ const routes = [
         element: <LoginPage />
     },
     {
-        path: '/user',
+        path: '/signup',
+        element: <SignupPage />
+    },
+    {
+        path: '/admin',
         element:
             <ProtectedRoute users={['admin']}>
                 <AdminDashboard />
             </ProtectedRoute>
-    },
-]
+    }
+];
 
 export default routes;
